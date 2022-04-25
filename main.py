@@ -2,6 +2,8 @@
 
 from os import remove as delete_file
 
+from datetime import datetime
+
 from PIL import Image
 
 from telegram.ext.callbackcontext import CallbackContext
@@ -16,19 +18,19 @@ from secret_key import KEY
 
 
 def start(update: Update, context: CallbackContext):
-    print(f"@{update.message.from_user.username}: /start")
+    print(f"{datetime.now()}: @{update.message.from_user.username}: /start")
     update.message.reply_text("Hellow uwu! Thiss bot cyan duu smt kawai UwU.\n\nIn case you are casual, type or click /help")
 
 
 
 def help(update: Update, context: CallbackContext):
-    print(f"@{update.message.from_user.username}: /help")
+    print(f"{datetime.now()}: @{update.message.from_user.username}: /help")
     update.message.reply_text("Yooo! Get Japanese Goblin'd:\n\nhttps://youtu.be/UIp6_0kct_U")
 
 
 
 def photo(update: Update, context: CallbackContext):
-    print(f"@{update.message.from_user.username}: photo")
+    print(f"{datetime.now()}: @{update.message.from_user.username}: photo")
 
     message = update.message
     photo = message.photo[-1]
@@ -62,7 +64,7 @@ def photo(update: Update, context: CallbackContext):
 
 
 def main():
-    print("Started bot.")
+    print(f"{datetime.now()}: Started bot.")
     updater = Updater(KEY, use_context=True)
     updater.dispatcher.add_handler(CommandHandler("start", start))
     updater.dispatcher.add_handler(CommandHandler("help", help))
